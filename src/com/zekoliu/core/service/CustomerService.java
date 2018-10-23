@@ -9,4 +9,12 @@ public interface CustomerService {
 											String custIndustry, String custLevel);
 	//创建客户
 	public int createCustomer(Customer customer);
+	
+	//通过id查找客户
+	public Customer getCustomerById(Integer id);
+	
+	//更新用户
+	public int updateCustomer(Customer customer);
+	//删除用户
+	public int deleteCustomer(Integer id);
 }

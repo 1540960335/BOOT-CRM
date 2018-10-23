@@ -79,10 +79,42 @@ public class CustomerController {
 		customer.setCust_createtime(timeStamp);
 		//执行Service层中的创建方法，返回的是受影响的行数
 		int rows = customerService.createCustomer(customer);
-		return null;
-//		if (rows > 0)
-//			return "OK";
-//		else 
-//			return "FAIL";
+//		return null;
+		if (rows > 0)
+			return "OK";
+		else 
+			return "FAIL";
+	}
+	
+	//更新用户
+	@RequestMapping("/customer/getCustomerById.action")
+	@ResponseBody
+	public Customer getCustomerById(Integer id) {
+		Customer customer = customerService.getCustomerById(id);
+		return customer;
+	}
+	
+	//更新用户
+	@RequestMapping("customer/update.action")
+	@ResponseBody
+	public String updateCustomer(Customer customer) {
+		int rows = customerService.updateCustomer(customer);
+		if (rows > 0) {
+			return "OK";
+		} else {
+			return "FAIL";
+		}
+	}
+	
+	//删除用户
+	@RequestMapping("customer/delete.action")
+	@ResponseBody
+	public String deleteCustomer(Integer id) {
+		int rows = customerService.deleteCustomer(id);
+		if (rows > 0) {
+			return "OK";
+		} else {
+			return "FAIL";
+		}
 	}
 }
